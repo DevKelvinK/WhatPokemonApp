@@ -1,45 +1,39 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { StatusBar } from 'react-native';
 import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+  ContainerBG,
+  H1,
+  Overlay,
+  ContainerContent,
+  LogoImage,
+  ButtonOpenCam,
+  LabelBtn,
+} from './src/styles/stylesComponents';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+    <>
+      <StatusBar barStyle="light-content" />
+      <ContainerBG
+        source={require('./src/assets/images/bgPokemonGo.jpeg')}
+        resizeMode="cover"
+      >
+        <Overlay />
+
+        <ContainerContent>
+          <H1>Kelvin Kesley Pereira de Souza</H1>
+
+          <LogoImage
+            source={require('./src/assets/images/logoPokemonGo.png')}
+            resizeMode="contain"
+          />
+
+          <ButtonOpenCam>
+            <LabelBtn>Scannear QRCODE</LabelBtn>
+          </ButtonOpenCam>
+        </ContainerContent>
+      </ContainerBG>
+    </>
   );
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
