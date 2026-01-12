@@ -1,39 +1,51 @@
+import { useState } from 'react';
 import { StatusBar } from 'react-native';
-import {
-  ContainerBG,
-  H1,
-  Overlay,
-  ContainerContent,
-  LogoImage,
-  ButtonOpenCam,
-  LabelBtn,
-} from './src/styles/stylesComponents';
+import { useCameraPermission } from 'react-native-vision-camera';
 
-function App() {
+import HomeComponent from './src/components/Home/home.component';
+import CameraComponent from './src/components/Camera/camera.component';
+import MenssageModal from './src/components/menssageModal.component';
+
+export default function App() {
+  const [showCameraComponent, setShowCameraComponent] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const { hasPermission, requestPermission } = useCameraPermission();
+
+  const handleOpenCamera = async () => {
+    if (!hasPermission) {
+      const granted = await requestPermission();
+
+      if (granted) {
+        setShowCameraComponent(true);
+        setShowModal(false);
+      } else {
+        setShowModal(true);
+      }
+    } else {
+      setShowCameraComponent(true);
+    }
+  };
+
   return (
     <>
       <StatusBar barStyle="light-content" />
-      <ContainerBG
-        source={require('./src/assets/images/bgPokemonGo.jpeg')}
-        resizeMode="cover"
-      >
-        <Overlay />
 
-        <ContainerContent>
-          <H1>Kelvin Kesley Pereira de Souza</H1>
+      {showCameraComponent ? (
+        <CameraComponent
+          onCloseComponent={() => setShowCameraComponent(false)}
+          onCloseModal={() => setShowModal(false)}
+        />
+      ) : (
+        <HomeComponent onOpenCamera={handleOpenCamera} />
+      )}
 
-          <LogoImage
-            source={require('./src/assets/images/logoPokemonGo.png')}
-            resizeMode="contain"
-          />
-
-          <ButtonOpenCam>
-            <LabelBtn>Scannear QRCODE</LabelBtn>
-          </ButtonOpenCam>
-        </ContainerContent>
-      </ContainerBG>
+      {showModal && (
+        <MenssageModal
+          msg="Você precisa conceder permissão da câmera para ler o QRCode."
+          onClose={() => setShowModal(false)}
+          onRetry={handleOpenCamera}
+        />
+      )}
     </>
   );
 }
-
-export default App;

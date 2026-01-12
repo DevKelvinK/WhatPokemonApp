@@ -1,30 +1,11 @@
 import styled from 'styled-components/native';
-import { colors } from './colors';
 
-export const ContainerBG = styled.ImageBackground`
-  width: 100%;
-  height: 100%;
-`;
-
-export const Overlay = styled.View`
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-`;
-
-export const ContainerContent = styled.View`
-  flex: 1;
-  align-items: center;
-  justify-content: space-between;
-
-  padding-block: 40px;
-  padding-inline: 28px;
-`;
+import { colors } from '../../styles/global.styles';
 
 export const H1 = styled.Text`
   text-transform: uppercase;
   color: ${colors.primary};
-  font-size: 20px;
+  font-size: 18px;
 `;
 
 export const LogoImage = styled.Image`
