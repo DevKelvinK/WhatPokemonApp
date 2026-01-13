@@ -1,25 +1,25 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { Camera, useCameraDevice } from 'react-native-vision-camera';
+import { useNavigation } from '@react-navigation/native';
 
-import { ButtonCloseCam, LabelBtn } from './stylesCamera';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '../../../routes/screen.routes';
+
+import { ButtonSimulat } from './stylesCamera';
 import MenssageModal from '../../menssageModal.component';
+import QRCodeReaderTemplate from './partials/_qrcReaderTemplate.component';
 
-type Props = {
-  onCloseComponent: () => void;
-  onCloseModal: () => void;
-};
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Camera'>;
 
-export default function CameraComponent({
-  onCloseComponent,
-  onCloseModal,
-}: Props) {
+export default function CameraComponent() {
   const device = useCameraDevice('back');
+  const navigation = useNavigation<NavigationProp>();
 
   if (device == null) {
     return (
       <MenssageModal
         msg="Nenhum dispositivo de câmera encontrado"
-        onClose={onCloseModal}
+        onClose={() => navigation.goBack()}
       ></MenssageModal>
     );
   }
@@ -28,9 +28,12 @@ export default function CameraComponent({
     <View style={{ flex: 1 }}>
       <Camera style={StyleSheet.absoluteFill} device={device} isActive={true} />
 
-      <ButtonCloseCam onPress={onCloseComponent}>
-        <LabelBtn>X</LabelBtn>
-      </ButtonCloseCam>
+      <QRCodeReaderTemplate/>
+
+      {/* Simulação do scan */}
+      <ButtonSimulat onPress={() => navigation.navigate('InfosPokemon')}>
+        <Text>Simular Scan → Infos</Text>
+      </ButtonSimulat>
     </View>
   );
 }

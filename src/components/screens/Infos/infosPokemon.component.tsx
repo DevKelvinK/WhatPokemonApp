@@ -1,34 +1,28 @@
 import { Image, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import {
-  ContainerBG,
-  ContainerContent,
-  Overlay,
-} from '../../../styles/global.styles';
-import {
-  ButtonBack,
-  H1,
-  InfosContainer,
-  NameText,
-  TypeText,
-} from './stylesInfos';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '../../../routes/screen.routes';
 
-type Props = {
-  onBackHome: () => void;
-};
+import { ContainerBG, ContainerContent, Overlay, } from '../../../styles/global.styles';
+import { ButtonBack, H1, InfosContainer, NameText, TypeText, } from './stylesInfos';
 
-export default function InfosPokemonComponent( ) {
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'InfosPokemon'>;
+
+export default function InfosPokemonComponent() {
+  const navigation = useNavigation<NavigationProp>();
+
   return (
     <ContainerBG
-      source={require('../../assets/images/bgPokemonGo.jpeg')}
+      source={require('../../../assets/images/bgPokemonGo.jpeg')}
       resizeMode="cover"
     >
-      <Overlay style={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }} />
+      <Overlay style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }} />
       <ContainerContent>
         <H1>id: 24</H1>
 
         <Image
-          source={require('../../assets/images/response.png')}
+          source={require('../../../assets/images/response.png')}
           resizeMode="contain"
           style={{ width: '70%', height: 250 }}
         />
@@ -37,7 +31,7 @@ export default function InfosPokemonComponent( ) {
           <NameText>Nome: ARBOK</NameText>
           <TypeText>Type: Poison</TypeText>
 
-          <ButtonBack>
+          <ButtonBack onPress={() => navigation.navigate('Home')}>
             <Text>Voltar</Text>
           </ButtonBack>
         </InfosContainer>
