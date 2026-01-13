@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-import { colors } from '../../styles/global.styles';
+import { colors } from '../../../styles/global.styles';
 
 export const H1 = styled.Text`
   text-transform: uppercase;

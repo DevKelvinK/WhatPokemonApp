@@ -4,7 +4,7 @@ import {
   ContainerBG,
   ContainerContent,
   Overlay,
-} from '../../styles/global.styles';
+} from '../../../styles/global.styles';
 import {
   ButtonBack,
   H1,

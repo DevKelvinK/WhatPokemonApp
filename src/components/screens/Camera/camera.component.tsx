@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import { Camera, useCameraDevice } from 'react-native-vision-camera';
 
 import { ButtonCloseCam, LabelBtn } from './stylesCamera';
-import MenssageModal from '../menssageModal.component';
+import MenssageModal from '../../menssageModal.component';
 
 type Props = {
   onCloseComponent: () => void;

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, Text } from 'react-native';
 import { useCameraPermission } from 'react-native-vision-camera';
 
-import HomeComponent from './src/components/Home/home.component';
-import CameraComponent from './src/components/Camera/camera.component';
+import HomeComponent from './src/components/screens/Home/home.component';
+import CameraComponent from './src/components/screens/Camera/camera.component';
 import MenssageModal from './src/components/menssageModal.component';
 
 export default function App() {
