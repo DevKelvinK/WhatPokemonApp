@@ -7,7 +7,7 @@ import InfosPokemonComponent from '../components/screens/Infos/infosPokemon.comp
 export type RootStackParamList = {
   Home: undefined;
   Camera: undefined;
-  InfosPokemon: undefined;
+  InfosPokemon: {id: number | null};
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

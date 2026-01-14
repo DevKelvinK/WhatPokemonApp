@@ -1,3 +1,4 @@
+import 'react-native-reanimated';
 import { StatusBar } from 'react-native';
 import Routes from './src/routes';
 

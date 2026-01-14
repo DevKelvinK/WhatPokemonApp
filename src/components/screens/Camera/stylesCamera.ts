@@ -69,11 +69,16 @@ export const OverlayBottom = styled.View`
 
 export const Label = styled.Text`
   position: absolute;
-  bottom: 180px;
-  left: 60px;
-  color: #fff;
+  bottom: 23%;
+  left: 15%;
+  color: #000;
   font-size: 16px;
   font-weight: bold;
+  padding-block: 8px;
+  padding-inline: 14px;
+  border-radius: 10px;
+
+  background-color: #ffffffa6;
 `;
 
 export const Corner = styled.View`
