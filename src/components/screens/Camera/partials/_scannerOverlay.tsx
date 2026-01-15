@@ -16,6 +16,7 @@ import {
   OverlaySide,
   OverlayTop,
 } from '../stylesCamera';
+
 // Function para limitar a área de leitura do QRCODE na câmera
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 const FRAME_LEFT = (SCREEN_WIDTH - FRAME_SIZE) / 2;
@@ -50,7 +51,11 @@ export function ScannerOverlay({ scanned }: Props) {
 
   //Trocar a Label quando ler o qr code
   useEffect(() => {
-    if (!scanned) return;
+    if (!scanned) {
+      setShowLabel(false);
+      setHiddenLabel(false);
+      return;
+    };
 
     const hideLabelTimer = setTimeout(() => {
       setHiddenLabel(true);
@@ -72,10 +77,10 @@ export function ScannerOverlay({ scanned }: Props) {
       <OverlayMiddle>
         <OverlaySide />
         <Frame>
-          <Corner as={CornerTL} />
-          <Corner as={CornerTR} />
-          <Corner as={CornerBL} />
-          <Corner as={CornerBR} />
+          <Corner style={showLabel ? { borderColor: 'green' } : {}} as={CornerTL} />
+          <Corner style={showLabel ? { borderColor: 'green' } : {}} as={CornerTR} />
+          <Corner style={showLabel ? { borderColor: 'green' } : {}} as={CornerBL} />
+          <Corner style={showLabel ? { borderColor: 'green' } : {}} as={CornerBR} />
         </Frame>
         <OverlaySide />
       </OverlayMiddle>

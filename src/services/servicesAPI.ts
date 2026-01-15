@@ -1,4 +1,3 @@
-// https://pokeapi.co/api/v2/pokemon/[ID]
 const BASE_URL = 'https://pokeapi.co/api/v2';
 
 async function request(endpoint: string) {

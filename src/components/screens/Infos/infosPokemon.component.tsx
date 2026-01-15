@@ -29,12 +29,11 @@ type RouteProps = RouteProp<RootStackParamList, 'InfosPokemon'>;
 
 export default function InfosPokemonComponent() {
   const navigation = useNavigation<NavigationProp>();
-  const route = useRoute<RouteProps>();
-  const { id } = route.params;
+  const { id } = useRoute<RouteProps>().params;
 
   const [pokemon, setPokemon] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [msgError, setMsgError] = useState('');
+  const [msgError, setMsgError] = useState<string>('');
 
   useEffect(() => {
     async function loadData() {
@@ -79,16 +78,16 @@ export default function InfosPokemonComponent() {
           <Text
             style={{
               color: 'red',
+              fontSize: 18,
               marginTop: 14,
               textAlign: 'center',
-              fontSize: 18,
               width: '70%',
             }}
           >
             Pokemon não encontrado, leia um QR Code valido!
           </Text>
 
-          <ButtonBack style={{backgroundColor: '#c01e1e', color: 'white'}} onPress={() => navigation.navigate('Home')}>
+          <ButtonBack style={{backgroundColor: '#c01e1e'}} onPress={() => navigation.navigate('Home')}>
             <Text style={{color: 'white', fontWeight: 'bold'}}>Voltar</Text>
           </ButtonBack>
         </ContainerOverlay>
@@ -105,8 +104,7 @@ export default function InfosPokemonComponent() {
           <InfosContainer>
             <NameText>Nome: {pokemon.name.toUpperCase()}</NameText>
             <TypeText>
-              Tipo{pokemon.types.length > 1 && 's'}:{' '}
-              {pokemon.types.map((t: any) => t.type.name).join(', ')}
+              Tipo{pokemon.types.length > 1 && 's'}: {pokemon.types.map((t: any) => t.type.name).join(', ')}
             </TypeText>
 
             <ButtonBack onPress={() => navigation.navigate('Home')}>

@@ -56,7 +56,7 @@ Caso o Pokémon possua mais de um tipo, eles são exibidos de forma concatenada.
 - TypeScript
 - Styled Components
 - React Navigation
-- Leitura de QR Code
+- Leitura de QR Code (VisionCamera)
 - Consumo de API REST (HTTP GET)
 
 ---
@@ -64,17 +64,33 @@ Caso o Pokémon possua mais de um tipo, eles são exibidos de forma concatenada.
 ## ▶️ Como Executar
 
 ### Pré-requisitos
-- Node.js 18 LTS
-- Ambiente Android configurado
-- Emulador ou dispositivo físico
+- Node.js 20 LTS ou superior
+- Ambiente Android configurado (SDK, NDK, emulador ou dispositivo físico)
+- Configurar `gradle.properties` com a arquitetura desejada, por exemplo:
+  ```bash
+  reactNativeArchitectures=arm64-v8a,x86
+  ```
+  Caso não saiba a arquitetura do seu dispositivo/emulador, deixe ativo:
+  ```bash
+  reactNativeArchitectures=armeabi-v7a,arm64-v8a,x86,x86_64
+  ```
+
 
 ### Execução
 
-```bash
-npm install
-npm start
-npm run android
-```
+**1. Instalar dependências:**
+  ```bash
+  npm install
+  ```
+**2. Iniciar o Metro bundler:**
+  ```bash
+  npm start
+  ```
+**3. Executar o app no emulador ou dispositivo:**
+  ```bash
+  npx react-native run-android
+  ```
+
 
 ---
 
