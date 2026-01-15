@@ -69,8 +69,7 @@ export const OverlayBottom = styled.View`
 
 export const Label = styled.Text`
   position: absolute;
-  bottom: 23%;
-  left: 15%;
+  bottom: ${() => FRAME_SIZE / 1.6}px;
   color: #000;
   font-size: 16px;
   font-weight: bold;

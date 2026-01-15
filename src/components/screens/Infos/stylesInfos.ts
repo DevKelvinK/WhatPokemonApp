@@ -38,3 +38,19 @@ export const ButtonBack = styled.TouchableOpacity`
 
   background-color: white;
 `;
+
+export const ContainerOverlay = styled.View`
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.4);
+`;
+
+export const LoadText = styled.Text`
+  color: #fff;
+  margin-top: 16px;
+  font-size: 18px;
+`;
